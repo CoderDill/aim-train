@@ -13,7 +13,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 function Routes({ login, signup }) {
    return (
     <div className="pt-5">
-      <Routes>
+      <Switch>
         <Route exact path="/">
           <h1>Homepage</h1>
         </Route>
@@ -27,7 +27,7 @@ function Routes({ login, signup }) {
         </Route> */}
 
         <Redirect to="/" />
-      </Routes>
+      </Switch>
     </div>
   );
 }
