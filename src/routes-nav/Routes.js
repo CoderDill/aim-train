@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-
+import Homepage from "../homepage/Homepage";
+import AimRange from "../AimRange";
 
 /** Site-wide routes.
  *
@@ -15,9 +16,11 @@ function Routes({ login, signup }) {
     <div className="pt-5">
       <Switch>
         <Route exact path="/">
-          <h1>Homepage</h1>
+          <Homepage />
         </Route>
-
+         <Route exact path="/aim">
+           <AimRange />
+        </Route>
         {/* <Route exact path="/login">
           <LoginForm login={login} />
         </Route>
