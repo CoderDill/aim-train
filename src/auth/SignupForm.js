@@ -18,7 +18,6 @@ function SignupForm({ signup }) {
 
    /** Handle form submit:
    *
-   * Calls login func prop and, if successful, redirect to /companies.
    */
 
   async function handleSubmit(evt) {

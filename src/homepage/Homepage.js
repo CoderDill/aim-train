@@ -25,7 +25,7 @@ function Homepage() {
         Aim Here!
       </Link>
       <div className="bundle-container" style={{ paddingTop: "5px" }}>
-        {bundles.map((bundle) => (
+        {bundles.slice(0, 25).map((bundle) => (
           <img className="bundles" src={bundle.displayIcon} alt=""></img>
         ))}
       </div>
