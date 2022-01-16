@@ -1,6 +1,7 @@
 import "./AimRange.css"
 
 function AimRange() {
+    
     return (
         <div className="container border">
             Range
