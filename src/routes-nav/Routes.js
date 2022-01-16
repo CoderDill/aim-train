@@ -2,6 +2,8 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "../homepage/Homepage";
 import AimRange from "../AimRange";
+import LoginForm from "../auth/LoginForm"
+import SignupForm from "../auth/SignupForm"
 
 /** Site-wide routes.
  *
@@ -20,14 +22,15 @@ function Routes({ login, signup }) {
         </Route>
          <Route exact path="/aim">
            <AimRange />
-        </Route>
-        {/* <Route exact path="/login">
+         </Route>
+         
+        <Route exact path="/login">
           <LoginForm login={login} />
         </Route>
 
         <Route exact path="/signup">
           <SignupForm signup={signup} />
-        </Route> */}
+        </Route>
 
         <Redirect to="/" />
       </Switch>

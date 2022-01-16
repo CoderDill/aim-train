@@ -3,7 +3,7 @@ import "./AimRange.css"
 function AimRange() {
     
     return (
-        <div className="container border">
+        <div className="aimRange border">
             <button className="btn btn-success">Start</button>
         </div>
     )
