@@ -39,7 +39,7 @@ function Navigation({ logout }) {
   }
 
   return (
-    <nav className="Navigation navbar navbar-expand-md">
+    <nav>
       <Link
         style={{
           fontWeight: "bold",

@@ -1,10 +1,9 @@
 import { Button } from "bootstrap";
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 import axios from "axios";
-import './Homepage.css'
-
+import "./Homepage.css";
 
 function Homepage() {
   const [bundles, setBundles] = useState([]);
@@ -25,7 +24,7 @@ function Homepage() {
       <Link className="btn btn-success" to="/aim">
         Aim Here!
       </Link>
-      <div style={{ paddingTop: "5px"}}>
+      <div className="bundle-container" style={{ paddingTop: "5px" }}>
         {bundles.map((bundle) => (
           <img className="bundles" src={bundle.displayIcon} alt=""></img>
         ))}
