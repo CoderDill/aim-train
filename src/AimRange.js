@@ -4,7 +4,7 @@ function AimRange() {
     
     return (
         <div className="container border">
-            Range
+            <button className="btn btn-success">Start</button>
         </div>
     )
 }
