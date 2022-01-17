@@ -4,3 +4,10 @@
   color: white;
   cursor: crosshair;
 }
+
+.target {
+  height: 30px;
+  width: 30px;
+  background-color: aliceblue;
+  border-radius: 50%;
+}

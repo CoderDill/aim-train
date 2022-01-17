@@ -10,8 +10,6 @@ function SignupForm({ signup }) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-    firstName: "",
-    lastName: "",
     email: "",
   });
   const [formErrors, setFormErrors] = useState([]);
@@ -24,7 +22,7 @@ function SignupForm({ signup }) {
     evt.preventDefault();
     let result = await signup(formData);
     if (result.success) {
-      history.push("/companies");
+      history.push("/");
     } else {
       setFormErrors(result.errors);
     }
@@ -62,27 +60,6 @@ function SignupForm({ signup }) {
                   value={formData.password}
                                   onChange={handleChange}
                                   placeholder="Password"
-                />
-              </div>
-
-              <div className="form-group">
-                <label>First name</label>
-                <input
-                  name="firstName"
-                  className="form-control"
-                  value={formData.firstName}
-                                  onChange={handleChange}
-                                  placeholder="First Name"
-                />
-              </div>
-              <div className="form-group">
-                <label>Last name</label>
-                <input
-                  name="lastName"
-                  className="form-control"
-                  value={formData.lastName}
-                                  onChange={handleChange}
-                                  placeholder="Last Name"
                 />
               </div>
               <div className="form-group">
