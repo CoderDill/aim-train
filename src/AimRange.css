@@ -1,4 +1,5 @@
 .aimRange {
+  display: block;
   height: 80vh;
   background-color: black;
   color: white;
@@ -6,8 +7,16 @@
 }
 
 .target {
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
   background-color: aliceblue;
   border-radius: 50%;
+}
+
+.targetList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: auto;
+  margin: 1em;
 }

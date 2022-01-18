@@ -9,16 +9,23 @@ function AimRange() {
     function addScore() {
         setScore(score + 1)
     }
+  
+  function makeTargets() {
+    const targets = []
+    for (let i = 0; i <= 500; i++) {
+      targets.push(<div className="target" onClick={addScore}></div>);
+    }
+    return targets;
+    }
      
     return (
       <div className="aimRange border">
         <button className="btn btn-success" onClick={start}>
           Start
         </button>
-            <span style={{ padding: '1em' }}>Timer: {seconds}</span>
-            Score: {score}
-            
-        <div className="target" onClick={addScore}></div>
+        <span style={{ padding: "1em" }}>Timer: {seconds}</span>
+        Score: {score}
+        <div className="targetList">{makeTargets()}</div>
       </div>
     );
 }
