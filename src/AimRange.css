@@ -4,13 +4,19 @@
   background-color: black;
   color: white;
   cursor: crosshair;
+  overflow: hidden;
 }
 
 .target {
   height: 35px;
   width: 35px;
-  background-color: aliceblue;
   border-radius: 50%;
+  visibility: hidden;
+}
+
+#activeTarget {
+  background-color: white;
+  visibility: visible;
 }
 
 .targetList {

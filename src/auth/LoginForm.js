@@ -76,7 +76,7 @@ function LoginForm({ login }) {
               </div>
 
               <button
-                className="btn btn-primary float-right"
+                className="btn btn-success float-right"
                 onSubmit={handleSubmit}
               >
                 Submit
