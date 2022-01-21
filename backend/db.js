@@ -1,6 +1,5 @@
-
 "use strict";
-/** Database setup for jobly. */
+/** Database setup for Aim. */
 const { Client } = require("pg");
 const { getDatabaseUri } = require("./config");
 
@@ -10,12 +9,12 @@ if (process.env.NODE_ENV === "production") {
   db = new Client({
     connectionString: getDatabaseUri(),
     ssl: {
-      rejectUnauthorized: false
-    }
+      rejectUnauthorized: false,
+    },
   });
 } else {
   db = new Client({
-    connectionString: getDatabaseUri()
+    connectionString: getDatabaseUri(),
   });
 }
 

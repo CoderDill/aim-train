@@ -1,6 +1,6 @@
 import "./AimRange.css"
 import { useStopwatch } from 'react-timer-hook'
-import { useState } from "react"
+import React, { useState } from "react"
 
 function AimRange() {
     const { seconds, start, pause } = useStopwatch(0)
