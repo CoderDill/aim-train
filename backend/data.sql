@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS rewards_db;
+DROP DATABASE IF EXISTS aim_train_db;
 
-CREATE DATABASE rewards_db;
+CREATE DATABASE aim_train_db;
 
-\c rewards_db;
+\c aim_train_db;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS rewards;

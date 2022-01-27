@@ -41,7 +41,7 @@ class User {
    * Throws ExpressError on duplicates.
    **/
 
-  static async register(username, password) {
+  static async register(username, password, email) {
     const duplicateCheck = await db.query(
       `SELECT username
            FROM users
@@ -58,9 +58,10 @@ class User {
     const result = await db.query(
       `INSERT INTO users
            (username,
-            password)
-           VALUES ($1, $2)
-           RETURNING id, username`,
+            password,
+            email)
+           VALUES ($1, $2, $3)
+           RETURNING id, username, email`,
       [username, hashedPassword]
     );
 

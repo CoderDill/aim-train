@@ -49,7 +49,7 @@ class AimApi {
   /** Signup for site. */
 
   static async signup(data) {
-    let res = await this.request(`auth/register`, data, "post");
+    let res = await this.request(`users/signup`, data, "post");
     return res.token;
   }
 

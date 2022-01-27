@@ -46,6 +46,15 @@ router.post("/login", async function (req, res, next) {
   }
 });
 
+router.post("/signup", async function (req, res, next) {
+  try {
+    let { username, password, email } = req.body;
+    const user = await User.register(username, password, email);
+    return res.json(user);
+  } catch (err) {
+    return next(err);
+  }
+});
 
 router.delete("/:username", async (req, res, next) => {
   try {

@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
  * Shows form and manages update to state on changes.
  * On submission:
  * - calls login function prop
- * - redirects to /companies route
+ * - redirects to / route
  *
  * Routes -> LoginForm -> Alert
  * Routed as /login
@@ -29,7 +29,7 @@ function LoginForm({ login }) {
     evt.preventDefault();
     let result = await login(formData);
     if (result.success) {
-      history.push("/companies");
+      history.push("/rewards");
     } else {
       setFormErrors(result.errors);
     }
