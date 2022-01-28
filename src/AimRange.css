@@ -1,4 +1,5 @@
 .aimRange {
+  position: relative;
   display: block;
   height: 80vh;
   background-color: black;
@@ -11,7 +12,7 @@
   height: 35px;
   width: 35px;
   border-radius: 50%;
-  visibility: hidden;
+  color: white;
 }
 
 #activeTarget {
