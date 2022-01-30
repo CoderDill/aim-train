@@ -14,7 +14,6 @@ function Homepage() {
 
   async function getBundles() {
     let res = await axios.get("https://valorant-api.com/v1/bundles");
-    console.log(res);
     setBundles(res.data.data);
   }
   return (
