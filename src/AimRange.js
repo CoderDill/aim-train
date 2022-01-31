@@ -6,8 +6,8 @@ function AimRange() {
   const { seconds, start, pause } = useStopwatch(0);
   const [score, setScore] = useState(0);
   const [targets, setTargets] = useState([]);
-  const [top, setTop] = useState();
-  // Math.floor(Math.random() * document.querySelector(".AimRange").offsetHeight) Doesn't work
+  const [top, setTop] = useState(Math.floor(Math.random() * window.innerHeight)
+);
   const [right, setRight] = useState(
     Math.floor(Math.random() * window.innerWidth)
   );
@@ -27,10 +27,16 @@ function AimRange() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const width = Math.floor(Math.random() * window.innerWidth);
+      let width = Math.floor(Math.random() * window.innerWidth);
+      let height = Math.floor(Math.random() * window.innerHeight)
+
+      if (height < 20) height += 20
+      if (height > 1000) height -= 250
+
       if (width < 15) width += 15;
       if (width > window.innerWidth - 15) width -= 15;
       setRight(width);
+      setTop(height);
     }, 1000);
     return () => clearInterval(interval);
   }, [right, top]);
