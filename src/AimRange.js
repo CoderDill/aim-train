@@ -43,9 +43,9 @@ function AimRange() {
 
   return (
     <div className="aimRange border">
-      <button className="btn btn-success">Start</button>
+      <button className="btn btn-success" onClick={start}>Start</button>
       <span style={{ padding: "1em" }}>Timer: {seconds}</span>
-      Score: {score} {right} {top}
+      Score: {score}
       <div style={target} onClick={addScore}></div>
     </div>
   );
