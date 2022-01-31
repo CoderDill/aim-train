@@ -1,16 +1,18 @@
 import "./AimRange.css";
 import { useStopwatch } from "react-timer-hook";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function AimRange() {
   const { seconds, start, pause } = useStopwatch(0);
   const [score, setScore] = useState(0);
   const [targets, setTargets] = useState([]);
-  const [top, setTop] = useState(
+  const [top, setTop] =
+    useState();
     // Math.floor(Math.random() * document.querySelector(".AimRange").offsetHeight) Doesn't work
+  const [right, setRight] = useState(
+    Math.floor(Math.random() * window.innerWidth)
   );
-  const [right, setRight] = useState(Math.floor(Math.random() * window.innerWidth))
-    
+
   const target = {
     position: "absolute",
     top: `${top}px`,
@@ -24,7 +26,14 @@ function AimRange() {
     setScore(score + 1);
   }
 
-  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const width = Math.floor(Math.random() * window.innerWidth);
+      if (width < 10) width += 10
+      setRight(width);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [right, top]);
 
   return (
     <div className="aimRange border">
@@ -33,12 +42,7 @@ function AimRange() {
       </button>
       <span style={{ padding: "1em" }}>Timer: {seconds}</span>
       Score: {score} {right} {top}
-      
-      <div
-        style={target}
-        onClick={addScore}
-        ></div>
-      
+      <div style={target} onClick={addScore}></div>
     </div>
   );
 }
