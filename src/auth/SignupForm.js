@@ -14,7 +14,7 @@ function SignupForm({ signup }) {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-   /** Handle form submit:
+  /** Handle form submit:
    *
    */
 
@@ -47,8 +47,8 @@ function SignupForm({ signup }) {
                   name="username"
                   className="form-control"
                   value={formData.username}
-                                  onChange={handleChange}
-                                  placeholder="Username"
+                  onChange={handleChange}
+                  placeholder="Username"
                 />
               </div>
               <div className="form-group">
@@ -58,8 +58,8 @@ function SignupForm({ signup }) {
                   name="password"
                   className="form-control"
                   value={formData.password}
-                                  onChange={handleChange}
-                                  placeholder="Password"
+                  onChange={handleChange}
+                  placeholder="Password"
                 />
               </div>
               <div className="form-group">
@@ -69,12 +69,12 @@ function SignupForm({ signup }) {
                   name="email"
                   className="form-control"
                   value={formData.email}
-                                  onChange={handleChange}
-                                  placeholder="Email"
+                  onChange={handleChange}
+                  placeholder="Email"
                 />
               </div>
 
-                <button
+              <button
                 type="submit"
                 className="btn btn-success float-right"
                 onSubmit={handleSubmit}
