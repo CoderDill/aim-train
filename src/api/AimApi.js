@@ -34,7 +34,7 @@ class AimApi {
 
   /** Get the current user. */
 
-  static async getCurrentUser(username) {
+  static async getCurrUser(username) {
     let res = await this.request(`users/${username}`);
     return res.user;
   }

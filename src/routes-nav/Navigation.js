@@ -4,7 +4,7 @@ import UserContext from "../auth/UserContext";
 import './Navigation.css'
 
 function Navigation({ logout }) {
-  // const { currentUser } = useContext(UserContext);
+  const { currUser } = useContext(UserContext);
 
   function loggedInNav() {
     return (
@@ -53,7 +53,7 @@ function Navigation({ logout }) {
       >
         Aim Train
       </Link>
-      {loggedOutNav()}
+      {currUser ? loggedInNav() : loggedOutNav()}
     </nav>
   );
 }

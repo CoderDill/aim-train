@@ -1,6 +1,6 @@
 import React from "react";
 
-/** Context: provides currentUser object and setter for it throughout app. */
+/** Context: provides currUser object and setter for it throughout app. */
 
 const UserContext = React.createContext();
 
