@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 function AimRange() {
   const { seconds, start, pause } = useStopwatch(0);
   const [score, setScore] = useState(0);
-  const [targets, setTargets] = useState([]);
+  // const [targets, setTargets] = useState([]);
   const [top, setTop] = useState(Math.floor(Math.random() * window.innerHeight)
 );
   const [right, setRight] = useState(
@@ -23,12 +23,18 @@ function AimRange() {
   };
   function addScore() {
     setScore(score + 1);
+    setRight(Math.floor(Math.random() * window.innerWidth));
+    setTop(Math.floor(Math.random() * 1029));
+  }
+
+  function getRange(x, y) {
+
   }
 
   useEffect(() => {
     const interval = setInterval(() => {
       let width = Math.floor(Math.random() * window.innerWidth);
-      let height = Math.floor(Math.random() * window.innerHeight)
+      let height = Math.floor(Math.random() * 1029);
 
       if (height < 20) height += 20
       if (height > 1000) height -= 250
