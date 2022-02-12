@@ -34,7 +34,7 @@ class AimApi {
 
   /** Get the current user. */
 
-  static async getCurrentUser(username) {
+  static async getCurrUser(username) {
     let res = await this.request(`users/${username}`);
     return res.user;
   }
@@ -42,7 +42,7 @@ class AimApi {
   /** Get token for login from username, password. */
 
   static async login(data) {
-    let res = await this.request(`auth/token`, data, "post");
+    let res = await this.request(`users/login`, data, "post");
     return res.token;
   }
 
