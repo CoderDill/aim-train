@@ -16,10 +16,6 @@ function AimRange() {
     position: "absolute",
     top: `${top}px`,
     right: `${right}px`,
-    height: "35px",
-    width: "35px",
-    borderRadius: "50%",
-    backgroundColor: "white",
   };
   function addScore() {
     setScore(score + 1);
@@ -52,7 +48,7 @@ function AimRange() {
       <button className="btn btn-success" onClick={start}>Start</button>
       <span style={{ padding: "1em" }}>Timer: {seconds}</span>
       Score: {score}
-      <div style={target} onClick={addScore}></div>
+      <div className="target" style={target} onClick={addScore}></div>
     </div>
   );
 }
