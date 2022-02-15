@@ -5,6 +5,8 @@ import './Navigation.css'
 
 function Navigation({ logout }) {
   const { currUser } = useContext(UserContext);
+  console.debug("Navigation", "currentUser=", currUser);
+
 
   function loggedInNav() {
     return (

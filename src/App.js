@@ -77,7 +77,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{ currUser }}>
+      <UserContext.Provider value={{ currUser, setCurrUser }}>
         <div className="App">
           <Navigation logout={logout}/>
           <main>
