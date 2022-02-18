@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import UserContext from "../auth/UserContext";
+
 
 /** Signup form.
  *
@@ -13,6 +15,7 @@ function SignupForm({ signup }) {
     email: "",
   });
   const [formErrors, setFormErrors] = useState([]);
+  const {currUser, setCurrUser} = useContext(UserContext)
 
   /** Handle form submit:
    *
@@ -23,6 +26,7 @@ function SignupForm({ signup }) {
     let result = await signup(formData);
     if (result.success) {
       history.push("/users/signup");
+      setCurrUser(result)
     } else {
       setFormErrors(result.errors);
     }

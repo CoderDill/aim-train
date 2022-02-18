@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import UserContext from "../auth/UserContext";
 
 /** Login form.
  *
@@ -19,6 +20,8 @@ function LoginForm({ login }) {
     password: "",
   });
   const [formErrors, setFormErrors] = useState([]);
+  const { currUser, setCurrUser } = useContext(UserContext);
+
 
   /** Handle form submit:
    *
@@ -30,6 +33,7 @@ function LoginForm({ login }) {
     let result = await login(formData);
     if (result.success) {
       history.push("/rewards");
+      setCurrUser(result);
     } else {
       setFormErrors(result.errors);
     }

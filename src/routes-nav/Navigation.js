@@ -1,28 +1,23 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import UserContext from "../auth/UserContext";
-import './Navigation.css'
+import "./Navigation.css";
 
 function Navigation({ logout }) {
   const { currUser } = useContext(UserContext);
   console.debug("Navigation", "currentUser=", currUser);
 
-
   function loggedInNav() {
     return (
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item mr-4">
-          <NavLink className="nav-link" to="/companies">
-            Train
-          </NavLink>
-        </li>
-        
-        <li className="nav-item">
-          <Link className="nav-link" to="/" onClick={logout}>
-            Log out
-          </Link>
-        </li>
-      </ul>
+      <div className="signedIn">
+        <NavLink className="nav-link" to="/aim">
+          Train
+        </NavLink>
+
+        <Link className="nav-link" to="/" onClick={logout}>
+          Log out
+        </Link>
+      </div>
     );
   }
 
@@ -48,7 +43,7 @@ function Navigation({ logout }) {
           textDecoration: "none",
           color: "green",
           fontSize: 20,
-          paddingLeft: ".5em"
+          paddingLeft: ".5em",
         }}
         className="navbar-brand"
         to="/"
