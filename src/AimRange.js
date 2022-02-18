@@ -1,9 +1,9 @@
 import "./AimRange.css";
-import { useStopwatch } from "react-timer-hook";
+import { useTimer } from "react-timer-hook";
 import React, { useState, useEffect } from "react";
 
 function AimRange() {
-  const { seconds, start, pause } = useStopwatch(0);
+  const { seconds, start, pause } = useTimer({ seconds: 6000, onExpire: () => console.log("game Over")});
   const [score, setScore] = useState(0);
   // const [targets, setTargets] = useState([]);
   const [top, setTop] = useState(Math.floor(Math.random() * window.innerHeight)
@@ -17,6 +17,7 @@ function AimRange() {
     top: `${top}px`,
     right: `${right}px`,
   };
+  
   function addScore() {
     setScore(score + 1);
     setRight(Math.floor(Math.random() * window.innerWidth));
