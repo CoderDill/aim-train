@@ -15,7 +15,7 @@ function Navigation({ logout }) {
         </NavLink>
 
         <Link className="nav-link" to="/" onClick={logout}>
-          Log out
+          Logout
         </Link>
       </div>
     );
