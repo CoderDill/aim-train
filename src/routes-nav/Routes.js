@@ -2,8 +2,8 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Homepage from "../homepage/Homepage";
 import AimRange from "../AimRange";
-import LoginForm from "../auth/LoginForm"
-import SignupForm from "../auth/SignupForm"
+import LoginForm from "../auth/LoginForm";
+import SignupForm from "../auth/SignupForm";
 
 /** Site-wide routes.
  *
@@ -14,16 +14,18 @@ import SignupForm from "../auth/SignupForm"
  */
 
 function Routes({ login, signup }) {
-   return (
+  const time = new Date();
+  time.setSeconds(time.getSeconds() + 60);
+  return (
     <div className="pt-5">
       <Switch>
         <Route exact path="/">
           <Homepage />
         </Route>
-         <Route exact path="/aim">
-           <AimRange />
-         </Route>
-         
+        <Route exact path="/aim">
+          <AimRange expiryTimestamp={time}/>
+        </Route>
+
         <Route exact path="/login">
           <LoginForm login={login} />
         </Route>

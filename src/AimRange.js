@@ -2,9 +2,10 @@ import "./AimRange.css";
 import { useTimer } from "react-timer-hook";
 import React, { useState, useEffect } from "react";
 
-function AimRange() {
-  const { seconds, start, pause } = useTimer({
-    seconds: 6000,
+function AimRange({ expiryTimestamp }) {
+  const { seconds, start, restart, isRunning } = useTimer({
+    expiryTimestamp,
+    autoStart: false,
     onExpire: () => console.log("game Over"),
   });
   const [score, setScore] = useState(0);
@@ -41,15 +42,25 @@ function AimRange() {
       if (width > window.innerWidth - 15) width -= 15;
       setRight(width);
       setTop(height);
-    }, 1000);
+    }, 750);
     return () => clearInterval(interval);
   }, [right, top]);
 
   return (
     <div className="aimRange border">
-      <button className="btn btn-success" onClick={start}>
-        Start
-      </button>
+      {isRunning ? (
+        <button className="btn btn-success m-1" onClick={() => {
+          const time = new Date();
+          time.setSeconds(time.getSeconds() + 300);
+          restart(time)
+        }}>
+          Restart
+        </button>
+      ) : (
+        <button className="btn btn-success m-1" onClick={start}>
+          Start
+        </button>
+      )}
       <span style={{ padding: "1em" }}>Timer: {seconds}</span>
       Score: {score}
       <div className="target" style={target} onClick={addScore}></div>
