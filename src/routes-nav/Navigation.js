@@ -13,10 +13,14 @@ function Navigation({ logout }) {
         <NavLink className="nav-link" to="/aim">
           Train
         </NavLink>
+        
+        <NavLink className="nav-link" to="/profile">
+          Profile
+        </NavLink>
 
-        <Link className="nav-link" to="/" onClick={logout}>
+        <NavLink className="nav-link" to="/" onClick={logout}>
           Logout
-        </Link>
+        </NavLink>
       </div>
     );
   }

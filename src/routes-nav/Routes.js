@@ -4,6 +4,7 @@ import Homepage from "../homepage/Homepage";
 import AimRange from "../AimRange";
 import LoginForm from "../auth/LoginForm";
 import SignupForm from "../auth/SignupForm";
+import { Profile } from "../profile/Profile";
 
 /** Site-wide routes.
  *
@@ -24,6 +25,10 @@ function Routes({ login, signup }) {
         </Route>
         <Route exact path="/aim">
           <AimRange expiryTimestamp={time}/>
+        </Route>
+        
+        <Route exact path="/profile">
+          <Profile />
         </Route>
 
         <Route exact path="/login">
