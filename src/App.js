@@ -7,6 +7,7 @@ import Navigation from "./routes-nav/Navigation";
 import AimApi from "./api/AimApi";
 import useLocalStorage from "./hooks/useLocalStorage";
 import jwt from "jsonwebtoken";
+import axios from 'axios'
 
 export const TOKEN_STORAGE_ID = "aim-token";
 
@@ -14,6 +15,13 @@ function App() {
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [currUser, setCurrUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
+  const [maps, setMaps] = useState([]);
+
+  async function getMaps() {
+    let res = await axios.get("https://valorant-api.com/v1/maps");
+    console.log(res);
+    setMaps(res.data.data);
+  }
 
   useEffect(
     function loadUser() {
@@ -37,6 +45,7 @@ function App() {
       // to false to control the spinner.
       setInfoLoaded(false);
       getCurrUser();
+      getMaps()
     },
     [token]
   );
@@ -78,8 +87,12 @@ function App() {
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ currUser, setCurrUser }}>
-        <div className="App">
-          <Navigation logout={logout}/>
+        <div
+          style={{
+          }}
+          className="App"
+        >
+          <Navigation logout={logout} />
           <main>
             <Routes login={login} signup={signup} />
           </main>

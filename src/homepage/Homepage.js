@@ -16,6 +16,8 @@ function Homepage() {
     let res = await axios.get("https://valorant-api.com/v1/bundles");
     setBundles(res.data.data);
   }
+  
+  
   return (
     <div className="Homepage">
       <h1>Aim Train</h1>
@@ -23,11 +25,11 @@ function Homepage() {
       <Link className="btn btn-success" to="/aim">
         Aim Here!
       </Link>
-      <div className="bundle-container" style={{ paddingTop: "5px" }}>
+      {/* <div className="bundle-container" style={{ paddingTop: "5px" }}>
         {bundles.slice(0, 25).map((bundle) => (
           <img className="bundles" src={bundle.displayIcon} alt=""></img>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
