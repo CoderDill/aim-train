@@ -45,7 +45,7 @@ function Navigation({ logout }) {
         style={{
           fontWeight: "bold",
           textDecoration: "none",
-          color: "green",
+          color: "lavender",
           fontSize: 20,
           paddingLeft: ".5em",
         }}

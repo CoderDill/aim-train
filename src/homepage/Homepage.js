@@ -19,7 +19,7 @@ function Homepage() {
   
   
   return (
-    <div className="Homepage">
+    <div style={{marginTop: "200px"}}className="Homepage">
       <h1>Aim Train</h1>
       <p>First person shooter aim trainer.</p>
       <Link className="btn btn-success" to="/aim">

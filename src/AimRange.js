@@ -47,7 +47,7 @@ function AimRange({ expiryTimestamp }) {
   }, [right, top]);
 
   return (
-    <div className="aimRange border">
+    <div className="aimRange">
       {isRunning ? (
         <button className="btn btn-success m-1" onClick={() => {
           const time = new Date();
