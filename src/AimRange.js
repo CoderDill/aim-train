@@ -44,7 +44,7 @@ function AimRange({ expiryTimestamp }) {
       setTop(height);
     }, 750);
     return () => clearInterval(interval);
-  }, [right, top]);
+  }, [expiryTimestamp]);
 
   return (
     <div className="aimRange">

@@ -43,14 +43,14 @@ class AimApi {
 
   static async login(data) {
     let res = await this.request(`users/login`, data, "post");
-    return res.token;
+    return res;
   }
 
   /** Signup for site. */
 
   static async signup(data) {
     let res = await this.request(`users/signup`, data, "post");
-    return res.token;
+    return res;
   }
 
   /** Save user profile page. */
