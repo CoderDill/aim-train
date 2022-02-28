@@ -58,9 +58,8 @@ function App() {
 
   async function signup(signupData) {
     try {
-      let res = await AimApi.signup(signupData);
-      setToken(res.token);
-      setCurrUser(res.username)
+      let token = await AimApi.signup(signupData);
+      setToken(token);
       return { success: true };
     } catch (errors) {
       console.error("signup failed", errors);
@@ -74,9 +73,8 @@ function App() {
    */
   async function login(loginData) {
     try {
-      let res = await AimApi.login(loginData);
-      setToken(res.token);
-      setCurrUser(res.username)
+      let token = await AimApi.login(loginData);
+      setToken(token);
       return { success: true };
     } catch (errors) {
       console.error("login failed", errors);
