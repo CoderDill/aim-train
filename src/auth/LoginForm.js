@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../auth/UserContext";
+import Alert from "../common/Alert";
+
 
 /** Login form.
  *
@@ -78,6 +80,10 @@ function LoginForm({ login }) {
                   required
                 />
               </div>
+
+              {formErrors.length ? (
+                <Alert type="danger" messages={formErrors} />
+              ) : null}
 
               <button
                 className="btn btn-success float-right"
