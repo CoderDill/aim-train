@@ -1,12 +1,15 @@
 import "./AimRange.css";
-import { useTimer } from "react-timer-hook";
+import { useTimer } from "use-timer";
 import React, { useState, useEffect } from "react";
 
-function AimRange({ expiryTimestamp }) {
-  const { seconds, start, restart, isRunning } = useTimer({
-    expiryTimestamp,
-    autoStart: false,
-    onExpire: () => console.log("game Over"),
+function AimRange() {
+  const { time, start, reset, status } = useTimer({
+    initialTime: 60,
+    endTime: 0,
+    timerType: "DECREMENTAL",
+    onTimeOver: () => {
+      console.log("Times Up")
+    }
   });
   const [score, setScore] = useState(0);
   const [top, setTop] = useState(
@@ -20,6 +23,7 @@ function AimRange({ expiryTimestamp }) {
     position: "absolute",
     top: `${top}px`,
     right: `${right}px`,
+    fontColor: 'white'
   };
 
   function addScore() {
@@ -44,25 +48,21 @@ function AimRange({ expiryTimestamp }) {
       setTop(height);
     }, 750);
     return () => clearInterval(interval);
-  }, [expiryTimestamp]);
+  }, []);
 
   return (
     <div className="aimRange">
-      {isRunning ? (
-        <button className="btn btn-success m-1" onClick={() => {
-          const time = new Date();
-          time.setSeconds(time.getSeconds() + 300);
-          restart(time)
-        }}>
-          Restart
-        </button>
+      {status === "RUNNING" ? (
+        <button className="btn btn-success m-1" onClick={reset}>Reset</button>
       ) : (
         <button className="btn btn-success m-1" onClick={start}>
           Start
         </button>
       )}
-      <span style={{ padding: "1em" }}>Timer: {seconds}</span>
-      Score: {score}
+      <span style={{ padding: "1em", color: "white" }}>
+        Timer: {time} Score: {score}
+      </span>
+
       <div className="target" style={target} onClick={addScore}></div>
     </div>
   );
