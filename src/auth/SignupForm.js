@@ -26,7 +26,6 @@ function SignupForm({ signup }) {
     let result = await signup(formData);
     if (result.success) {
       history.push("/users/signup");
-      setCurrUser(result)
     } else {
       setFormErrors(result.errors);
     }

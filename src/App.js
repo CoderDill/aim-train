@@ -19,7 +19,6 @@ function App() {
 
   async function getMaps() {
     let res = await axios.get("https://valorant-api.com/v1/maps");
-    console.log(res);
     setMaps(res.data.data);
   }
 
@@ -32,7 +31,7 @@ function App() {
             // put the token on the Api class so it can use it to call the API.
             AimApi.token = token;
             let currUser = await AimApi.getCurrUser(username);
-            setCurrUser(currUser);
+            setCurrUser(currUser.username);
           } catch (err) {
             setCurrUser(null);
           }

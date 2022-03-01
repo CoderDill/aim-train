@@ -2,7 +2,7 @@ CREATE TABLE "users" (
   "id" SERIAL PRIMARY KEY,
   "username" varchar,
   "password" password,
-  "email" email,
+  "email" text,
   "reward_level" int
 );
 

@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import UserContext from "../auth/UserContext";
 import Alert from "../common/Alert";
 
 
@@ -22,8 +21,6 @@ function LoginForm({ login }) {
     password: "",
   });
   const [formErrors, setFormErrors] = useState([]);
-  const { currUser, setCurrUser } = useContext(UserContext);
-
 
   /** Handle form submit:
    *
@@ -34,8 +31,7 @@ function LoginForm({ login }) {
     evt.preventDefault();
     let result = await login(formData);
     if (result.success) {
-      history.push("/rewards");
-      setCurrUser(result);
+      history.push("/aim");
     } else {
       setFormErrors(result.errors);
     }
@@ -87,7 +83,6 @@ function LoginForm({ login }) {
 
               <button
                 className="btn btn-success float-right"
-                onSubmit={handleSubmit}
               >
                 Submit
               </button>
