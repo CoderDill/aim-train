@@ -36,7 +36,7 @@ class AimApi {
 
   static async getCurrUser(username) {
     let res = await this.request(`users/${username}`);
-    return res.user;
+    return res;
   }
 
   /** Get token for login from username, password. */

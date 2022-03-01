@@ -31,7 +31,7 @@ function LoginForm({ login }) {
     evt.preventDefault();
     let result = await login(formData);
     if (result.success) {
-      history.push("/aim");
+      history.push("/profile");
     } else {
       setFormErrors(result.errors);
     }
@@ -83,6 +83,7 @@ function LoginForm({ login }) {
 
               <button
                 className="btn btn-success float-right"
+                onSubmit={handleSubmit}
               >
                 Submit
               </button>

@@ -31,6 +31,7 @@ function App() {
             // put the token on the Api class so it can use it to call the API.
             AimApi.token = token;
             let currUser = await AimApi.getCurrUser(username);
+            console.log(currUser)
             setCurrUser(currUser.username);
           } catch (err) {
             console.error("App loadUserInfo: problem loading", err);
@@ -75,6 +76,7 @@ function App() {
   async function login(loginData) {
     try {
       let token = await AimApi.login(loginData);
+      console.log(token)
       setToken(token);
       return { success: true };
     } catch (errors) {

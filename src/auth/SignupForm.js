@@ -22,7 +22,7 @@ function SignupForm({ signup }) {
     evt.preventDefault();
     let result = await signup(formData);
     if (result.success) {
-      history.push("/users/signup");
+      history.push("/profile");
     } else {
       setFormErrors(result.errors);
     }

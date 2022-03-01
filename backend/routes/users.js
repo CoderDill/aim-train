@@ -1,5 +1,4 @@
-/** Routes for users of pg-intro-demo. */
-
+const { createToken } = require("../helpers/tokens");
 const express = require("express");
 const router = express.Router();
 
@@ -40,7 +39,7 @@ router.post("/login", async function (req, res, next) {
   try {
     let { username, password } = req.body;
     const user = await User.authenticate(username, password);
-    return res.json(user);
+    return res.json(user.token);
   } catch (err) {
     return next(err);
   }
@@ -50,7 +49,9 @@ router.post("/signup", async function (req, res, next) {
   try {
     let { username, password, email } = req.body;
     const user = await User.register(username, password, email);
-    return res.json(user);
+    const token = createToken(user);
+
+    return res.json({token});
   } catch (err) {
     return next(err);
   }
