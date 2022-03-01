@@ -76,7 +76,6 @@ function App() {
   async function login(loginData) {
     try {
       let token = await AimApi.login(loginData);
-      console.log(token)
       setToken(token);
       return { success: true };
     } catch (errors) {
