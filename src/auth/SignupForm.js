@@ -1,8 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import UserContext from "../auth/UserContext";
-
-
+import Alert from "../common/Alert";
 /** Signup form.
  *
  */
@@ -15,7 +13,6 @@ function SignupForm({ signup }) {
     email: "",
   });
   const [formErrors, setFormErrors] = useState([]);
-  const {currUser, setCurrUser} = useContext(UserContext)
 
   /** Handle form submit:
    *
@@ -77,13 +74,11 @@ function SignupForm({ signup }) {
                 />
               </div>
 
-              <button
-                type="submit"
-                className="btn btn-success float-right"
-                onSubmit={handleSubmit}
-              >
-                Submit
-              </button>
+              {formErrors.length ? (
+                <Alert type="danger" messages={formErrors} />
+              ) : null}
+
+              <button className="btn btn-success float-right">Submit</button>
             </form>
           </div>
         </div>

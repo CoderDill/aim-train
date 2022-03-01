@@ -24,7 +24,7 @@ function LoginForm({ login }) {
 
   /** Handle form submit:
    *
-   * Calls login func prop and, if successful, redirect to /companies.
+   * Calls login func prop and, if successful, redirect to ?
    */
 
   async function handleSubmit(evt) {

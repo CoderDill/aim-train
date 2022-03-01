@@ -7,7 +7,7 @@ import Navigation from "./routes-nav/Navigation";
 import AimApi from "./api/AimApi";
 import useLocalStorage from "./hooks/useLocalStorage";
 import jwt from "jsonwebtoken";
-import axios from 'axios'
+import axios from "axios";
 
 export const TOKEN_STORAGE_ID = "aim-token";
 
@@ -33,6 +33,8 @@ function App() {
             let currUser = await AimApi.getCurrUser(username);
             setCurrUser(currUser.username);
           } catch (err) {
+            console.error("App loadUserInfo: problem loading", err);
+
             setCurrUser(null);
           }
         }
@@ -44,7 +46,7 @@ function App() {
       // to false to control the spinner.
       setInfoLoaded(false);
       getCurrUser();
-      getMaps()
+      getMaps();
     },
     [token]
   );
@@ -81,14 +83,12 @@ function App() {
     }
   }
 
-  if (!infoLoaded) return <p>Loading...</p>
+  if (!infoLoaded) return <p>Loading...</p>;
 
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ currUser, setCurrUser }}>
-        <div
-          className="App"
-        >
+        <div className="App">
           <Navigation logout={logout} />
           <main>
             <Routes login={login} signup={signup} />
