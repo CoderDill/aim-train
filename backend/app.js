@@ -6,6 +6,7 @@ const app = express();
 
 const rRouter = require("./routes/rewards");
 const uRouter = require("./routes/users");
+const gRouter = require("./routes/games");
 
 // view engine setup
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: false, limit: "50mb" }));
 app.use(cors());
 app.use("/users", uRouter);
 app.use("/rewards", rRouter);
+app.use("/games", gRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

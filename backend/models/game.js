@@ -16,4 +16,8 @@ class Game {
 
     return game;
   }
+
+  
 }
+
+module.exports = Game
