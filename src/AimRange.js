@@ -9,12 +9,13 @@ function AimRange({ getRange }) {
     timerType: "DECREMENTAL",
     onTimeOver: () => {
       setScore(0)
+      setStartGame(true)
     },
   });
   const [score, setScore] = useState(0);
   const [height, setHeight] = useState();
   const [width, setWidth] = useState();
-  const [startGame, setStartGame] = useState(false);
+  const [startGame, setStartGame] = useState(true);
   const range = useRef();
 
   
@@ -32,8 +33,9 @@ function AimRange({ getRange }) {
     setHeight(Math.floor(Math.random() * range.current.clientHeight));
   }
 
-  useEffect(() => {
-    
+  const startAim = useCallback(() => {
+    start()
+    setStartGame(false)
     const interval = setInterval(() => {
       const newWidth = Math.floor(Math.random() * range.current.clientWidth);
       setWidth(newWidth);
@@ -42,16 +44,22 @@ function AimRange({ getRange }) {
       setHeight(newHeight);
     }, 750);
     return () => clearInterval(interval);
-  }, [width, height]);
+  });
+
+  function restartGame() {
+    reset()
+    setStartGame(true)
+    setScore(0)
+  }
 
   return (
     <div className="aimRange" ref={range}>
       {status === "RUNNING" ? (
-        <button className="btn btn-success m-1" onClick={reset}>
+        <button className="btn btn-success m-1" onClick={restartGame}>
           Reset
         </button>
       ) : (
-        <button className="btn btn-success m-1" onClick={start}>
+        <button className="btn btn-success m-1" onClick={startAim}>
           Start
         </button>
       )}
@@ -60,7 +68,7 @@ function AimRange({ getRange }) {
       </span>
       
 
-      <div className="target" style={target} onClick={addScore}></div>
+      <div className="target" hidden={startGame} style={target} onClick={addScore}></div>
     </div>
   );
 }
