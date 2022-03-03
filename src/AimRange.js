@@ -1,59 +1,55 @@
 import "./AimRange.css";
 import { useTimer } from "use-timer";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
-function AimRange() {
+function AimRange({ getRange }) {
   const { time, start, reset, status } = useTimer({
     initialTime: 60,
     endTime: 0,
     timerType: "DECREMENTAL",
     onTimeOver: () => {
-      console.log("Times Up")
-    }
+      setScore(0)
+    },
   });
   const [score, setScore] = useState(0);
-  const [top, setTop] = useState(
-    Math.floor(Math.random() * window.innerHeight)
-  );
-  const [right, setRight] = useState(
-    Math.floor(Math.random() * window.innerWidth)
-  );
+  const [height, setHeight] = useState();
+  const [width, setWidth] = useState();
+  const [startGame, setStartGame] = useState(false);
+  const range = useRef();
 
+  
+  
   const target = {
     position: "absolute",
-    top: `${top}px`,
-    right: `${right}px`,
-    fontColor: 'white'
+    top: `${height}px`,
+    right: `${width}px`,
+    fontColor: "white",
   };
 
   function addScore() {
     setScore(score + 1);
-    setRight(Math.floor(Math.random() * window.innerWidth));
-    setTop(Math.floor(Math.random() * 1029));
+    setWidth(Math.floor(Math.random() * range.current.clientWidth));
+    setHeight(Math.floor(Math.random() * range.current.clientHeight));
   }
 
-  function getRange(x, y) {}
-
   useEffect(() => {
+    
     const interval = setInterval(() => {
-      let width = Math.floor(Math.random() * window.innerWidth);
-      let height = Math.floor(Math.random() * 1029);
+      const newWidth = Math.floor(Math.random() * range.current.clientWidth);
+      setWidth(newWidth);
 
-      if (height < 20) height += 20;
-      if (height > 1000) height -= 250;
-
-      if (width < 15) width += 15;
-      if (width > window.innerWidth - 15) width -= 15;
-      setRight(width);
-      setTop(height);
+      const newHeight = Math.floor(Math.random() * range.current.clientHeight);
+      setHeight(newHeight);
     }, 750);
     return () => clearInterval(interval);
-  }, []);
+  }, [width, height]);
 
   return (
-    <div className="aimRange">
+    <div className="aimRange" ref={range}>
       {status === "RUNNING" ? (
-        <button className="btn btn-success m-1" onClick={reset}>Reset</button>
+        <button className="btn btn-success m-1" onClick={reset}>
+          Reset
+        </button>
       ) : (
         <button className="btn btn-success m-1" onClick={start}>
           Start
@@ -62,6 +58,7 @@ function AimRange() {
       <span style={{ padding: "1em", color: "white" }}>
         Timer: {time} Score: {score}
       </span>
+      
 
       <div className="target" style={target} onClick={addScore}></div>
     </div>

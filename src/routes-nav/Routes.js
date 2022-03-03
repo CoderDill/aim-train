@@ -5,6 +5,8 @@ import AimRange from "../AimRange";
 import LoginForm from "../auth/LoginForm";
 import SignupForm from "../auth/SignupForm";
 import { Profile } from "../profile/Profile";
+import ReactDOM from "react-dom";
+
 
 /** Site-wide routes.
  *
@@ -17,6 +19,7 @@ import { Profile } from "../profile/Profile";
 function Routes({ login, signup }) {
   const time = new Date();
   time.setSeconds(time.getSeconds() + 60);
+  
   return (
     <div className="pt-5">
       <Switch>
@@ -24,7 +27,7 @@ function Routes({ login, signup }) {
           <Homepage />
         </Route>
         <Route exact path="/aim">
-          <AimRange expiryTimestamp={time}/>
+          <AimRange />
         </Route>
         
         <Route exact path="/profile">
