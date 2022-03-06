@@ -42,7 +42,7 @@ function AimRange({ getRange }) {
 
       const newHeight = Math.floor(Math.random() * range.current.clientHeight);
       setHeight(newHeight);
-    }, 750);
+    }, 1000);
     return () => clearInterval(interval);
   });
 
